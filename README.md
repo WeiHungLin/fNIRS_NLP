@@ -55,7 +55,7 @@ This repository is organized into three main parts:
 
 ## Installation
 ```bash
-git clone https://github.com/yourusername/yourrepo.git
+git clone https://github.com/xiaosuhu/fNIRS_NLP
 cd yourrepo
 conda env create -f environment.yml
 conda activate yourenv

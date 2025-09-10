@@ -1,0 +1,6 @@
+# macOS system files
+.DS_Store
+
+# Other common unwanted files
+._*
+Thumbs.db
