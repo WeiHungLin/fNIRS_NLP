@@ -1,6 +1,25 @@
-# Project Title
+# fNIRS Data Processing pipelines for natual language processing (NLP)
 
-_A short description of what this repository does and why it exists._
+This repository contains different MATLAB and Python scripts for fNIRS data processing pipelines (NLP tasks). 
+
+**NOTE**:
+## Suprisal Calculation
+
+If you would like to calculate surprisal values yourself, please request access to the following package:
+
+👉 [LingPred](https://github.com/cnllab/lingpred)
+
+Access to LingPred is managed by **Dr. Jonathan Brennan (University of Michigan)**.  
+Please reach out to him directly to obtain the necessary permissions before running the surprisal pipeline.  
+
+Once you have access, follow the setup instructions provided in the LingPred repository to install dependencies and run the surprisal extraction tools.
+
+<p align="left">
+  <img src="https://img.shields.io/badge/version-0.1-blue" alt="Version Badge">
+  <img src="https://img.shields.io/badge/license-MIT-green" alt="License Badge">
+  <img src="https://img.shields.io/badge/build-building_inprogress-yellow" alt="Build Badge">
+</p>
+
 
 ---
 
