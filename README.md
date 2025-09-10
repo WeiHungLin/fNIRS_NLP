@@ -49,7 +49,7 @@ This repository is organized into three main parts:
    ![Workflow Diagram](Forcasting_pipeline.png)
 
 ### Results
-- [Add figures / performance tables]
+![Workflow Diagram](sample-result.png)
 
 ---
 
