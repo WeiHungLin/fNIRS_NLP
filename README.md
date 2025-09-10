@@ -20,79 +20,33 @@ Once you have access, follow the setup instructions provided in the LingPred rep
   <img src="https://img.shields.io/badge/build-building_inprogress-yellow" alt="Build Badge">
 </p>
 
-
 ---
 
 ## Overview
-This repository is organized into two main parts:
+This repository is organized into three main parts:
+1. **Sample data**
+   - five de-id data was included
+   - 
+2. **Data preparation**
+   - Data preparation mainly based on Henry Huggings story listening data
+   - Data cut (remove the q&a part and reconnect the story listening part)
 
-1. **Three-Way Split Analysis**  
-   - Data preprocessing and experimental setup with three-way splits  
-   - Used for [your research goal / motivation]
+3. **Three-Way split analysis**  
+   - Suprisal calculation at 3 different levels lexcial/sytactical/phonem (with parallel workers)  
+   - Data recoding - insert the suprisal data into fNIRS data to become its design matrix
+   - First level, group level analysis and contrast and plotting are covered in https://github.com/xiaosuhu/fNIRS-DataProcessing-Pipelines-w-functions
 
-2. **NLP Forecasting with Future Words**  
-   - Predictive modeling with language models  
-   - Forecasting brain/behavioral responses (or other target variable) using future word information
+4. **NLP forecasting with future words**  
+   - GPT2 embeeding calculation  
+   - HbO data prep for the analysis
+   - design matrix prep
+   - Calculate brain score (correlation) and brain forcast score (forcasted brain score)
+   - Plotting and stats in Matlab
+   - This method comes from the paper "Evidence of a predictive coding hierarchy in the human brain listening to speech" - https://www.nature.com/articles/s41562-022-01516-2
 
----
+   Here is an illustration of the workflow:
 
-## Repository Structure
-```
-repo-root/
-│
-├── part1_three_way_split/
-│   ├── notebooks/        # Jupyter notebooks for analysis
-│   ├── scripts/          # Reusable scripts
-│   └── results/          # Example outputs
-│
-├── part2_nlp_forecasting/
-│   ├── notebooks/        # Forecasting experiments
-│   ├── models/           # Pretrained / fine-tuned models
-│   └── results/          # Predictions and evaluations
-│
-└── README.md
-```
-
----
-
-## Part 1: Three-Way Split Analysis
-
-### Goals
-- [Write here the purpose of this analysis]
-- [Example: To evaluate model generalization under different splits]
-
-### Methods
-- [Describe your methodology]
-- [List datasets used]
-- [Key equations or steps]
-
-### How to Run
-```bash
-cd part1_three_way_split
-python scripts/run_analysis.py --config configs/config.yaml
-```
-
-### Results
-- [Insert summary / plots / metrics]
-
----
-
-## Part 2: NLP Forecasting with Future Words
-
-### Goals
-- [State your forecasting objective]
-- [Example: Predict brain response using surprisal values at future words]
-
-### Methods
-- [Models: GPT-2, LLaMA, etc.]
-- [Feature extraction pipeline]
-- [Evaluation metrics]
-
-### How to Run
-```bash
-cd part2_nlp_forecasting
-python scripts/run_forecast.py --model gpt2 --future 5
-```
+   ![Workflow Diagram](Forcasting_pipeline.png)
 
 ### Results
 - [Add figures / performance tables]
@@ -110,25 +64,15 @@ conda activate yourenv
 ---
 
 ## Requirements
-- Python >= 3.9
-- PyTorch / TensorFlow [specify version]
-- [Other packages]
-
----
-
-## Citation
-If you use this repository, please cite:
-```
-[Add your paper / project citation here]
-```
-
----
-
-## License
-[MIT / Apache / Other]
+- Matlab:
+  - Please have the following toolbox or pipelines in path:
+    - https://github.com/huppertt/nirs-toolbox
+    - https://github.com/xiaosuhu/fNIRS-DataProcessing-Pipelines-w-functions
+- Python:
+  - see the requriment.txt
 
 ---
 
 ## Contact
 For questions or collaborations:  
-**Your Name** – [your.email@domain.com]  
+**Frank Hu** – [xiaosuhu@umich.edu]  
