@@ -3,10 +3,10 @@
 This repository contains different MATLAB and Python scripts for fNIRS data processing pipelines (NLP tasks). 
 
 **NOTE**:
-### NIRS toolbox
+#### NIRS toolbox
 You will need to first install **NIRS toolbox** (see [Installation](#installation) for details) in MATLAB in order to run these pipelines.
 
-### Suprisal Calculation
+#### Suprisal Calculation
 
 If you would like to calculate surprisal values yourself, please request access to the following package:
 
@@ -29,7 +29,7 @@ Once you have access, follow the setup instructions provided in the LingPred rep
 This repository is organized into three main parts:
 1. **Sample data**
    - five de-id data was included
-   - 
+
 2. **Data preparation**
    - Data preparation mainly based on Henry Huggings story listening data
    - Data cut (remove the q&a part and reconnect the story listening part)
