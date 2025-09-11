@@ -3,6 +3,9 @@
 This repository contains different MATLAB and Python scripts for fNIRS data processing pipelines (NLP tasks). 
 
 **NOTE**:
+## NIRS toolbox
+You will need to first install **NIRS toolbox** (see [Installation](#installation) for details) in MATLAB in order to run these pipelines.
+
 ## Suprisal Calculation
 
 If you would like to calculate surprisal values yourself, please request access to the following package:
