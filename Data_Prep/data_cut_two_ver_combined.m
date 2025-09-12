@@ -1,13 +1,16 @@
-%% Combine the two versions of data cut to split the story and question part
+%% Data cutting 
+% 1. This code cutted the raw story listening data to remove the Q&A section  
+% but concatenate the story listening section
+% 2. This code processes the version 1 with 12 questions, and version 2 with 4
+% questions
+% By Frank Hu 9/11/2025
 
-% datadir = 'F:\MatlabBackUp\PROJECT_HH_ENGLISH\Pilot_Aanalysis_LLM_fNIRS\Data\rawdata_v2\rawdata_v2_deslxic_regular\WD';
-datadir = 'F:\Matlab_Project\PlayGroud\Ren\Dys_TD_Group_result_re_run\TD';
-
+%% Specify the directories
+datadir = './Example_data/raw_data';
 dataset = nirs.io.loadDirectory(datadir,{'Subject'});
+outputdir_story = './Example_data/cutted_data';
 
-% outputdir_story = 'F:\MatlabBackUp\PROJECT_HH_ENGLISH\Pilot_Aanalysis_LLM_fNIRS\Data\story_data_v2\WD';
-outputdir_story = 'F:\Matlab_Project\PlayGroud\Ren\Dys_TD_Group_result_re_run\TD_cut';
-
+%%
 for i = 1:length(dataset)
     load(dataset(i).description, '-mat');
     
@@ -66,13 +69,13 @@ for i = 1:length(dataset)
         story.aux = [];
         % align the time and make it continously
         story.t = (1/Fs : 1/Fs : size(story.d,1)/Fs)';
-        % Make the s 3 columns to match the original
-        story.s(2,2)=1;
-        story.s(3,3)=1;
         
         mkdir(strcat(outputdir_story, '\', id))
         cd(strcat(outputdir_story, '\', id))
         save(strcat('story_',id,'.nirs'),'-struct','story')
+        cd ..
+        cd ..
+        cd ..
         % Cut the data qa part
         %     qa.d = []; % Not needed as it will save every loop
         %     qa.t = [];
@@ -144,13 +147,13 @@ for i = 1:length(dataset)
         
         % align the time and make it continously
         story.t = (1/Fs : 1/Fs : size(story.d,1)/Fs)';
-        % Make the s 3 columns to match the original
-        story.s(2,2)=1;
-        story.s(3,3)=1;
         
         mkdir(strcat(outputdir_story, '/', id))
         cd(strcat(outputdir_story, '/', id))
         save(strcat('story_',id,'.nirs'),'-struct','story')
+        cd ..
+        cd ..
+        cd ..
         % Cut the data qa part
         %     qa.d = []; % Not needed as it will save every loop
         %     qa.t = [];
