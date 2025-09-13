@@ -76,15 +76,17 @@ firstlevelglm.basis('default') = firstlevelbasis;
 SubjStats=firstlevelglm.run(hb_trim);
 disp('Ready to save SubjStats...')
 
-save('SubjStats.mat','SubjStats','-v7.3','-nocompression')
+save('./Example_data/Temp/SubjStats.mat','SubjStats','-v7.3','-nocompression')
 disp('Done!')
 
 %% Add Age & Gender for demographic as example
 % the path to a csv file containing demographics
-% NOTE:if you are using mac, you may gets an error when reading the table
+% NOTE: if you are using mac, you may gets an error when reading the table
+% NOTE: you can also include demo for the surprisal analysis, the same as
+% the regular GLM pipline
 
-Demo = nirs.modules.AddDemographics();
-Demo.demoTable = readtable('./Demographic_fake.csv');
-Demo.varToMatch='Subject';
-SubjStats = Demo.run(SubjStats);
+% Demo = nirs.modules.AddDemographics();
+% Demo.demoTable = readtable('./Demographic_fake.csv');
+% Demo.varToMatch='Subject';
+% SubjStats = Demo.run(SubjStats);
 

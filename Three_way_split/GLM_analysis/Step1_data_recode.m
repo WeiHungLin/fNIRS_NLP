@@ -42,7 +42,7 @@ for k = 1:length(dataset)
     s1.dur = ones(1957,1) * 0.02;
     s1.amp = word_rate;
     s1.name = 'word_rate';
-    stim('stim_channel1') = s1;
+    stim('word_rate') = s1;
 
     % Channel 2: Word freq
     s2 = nirs.design.StimulusEvents();
@@ -50,7 +50,7 @@ for k = 1:length(dataset)
     s2.dur = s1.dur;
     s2.amp = word_freq;
     s2.name = 'word_freq';
-    stim('stim_channel2') = s2;
+    stim('word_freq') = s2;
     
     % Channel 3: Lex Surprisal
     s3 = nirs.design.StimulusEvents();
@@ -58,7 +58,7 @@ for k = 1:length(dataset)
     s3.dur = s1.dur;
     s3.amp = lex_surprisal;
     s3.name = 'lex_surp';
-    stim('stim_channel3') = s3;
+    stim('lex_surp') = s3;
     
     % Channel 4: Pos Surprisal
     s4 = nirs.design.StimulusEvents();
@@ -66,7 +66,7 @@ for k = 1:length(dataset)
     s4.dur = s1.dur;
     s4.amp = pos_surprisal;
     s4.name = 'pos_surp';
-    stim('stim_channel4') = s4;
+    stim('pos_surp') = s4;
     
     % Channel 5: Pho Surprisal
     s5 = nirs.design.StimulusEvents();
@@ -74,7 +74,7 @@ for k = 1:length(dataset)
     s5.dur = s1.dur;
     s5.amp = pho_surprisal;
     s5.name = 'pho_surp';
-    stim('stim_channel5') = s5;
+    stim('pho_surp') = s5;
 
     % Update dataset
     dataset(k,1).stimulus = stim;
@@ -83,6 +83,6 @@ for k = 1:length(dataset)
 end
 
 %% Save result
-mkdir('D:\Downloads\Data_Updated_Stimuli')
-save('D:\Downloads\Data_Updated_Stimuli\Data_Gain_Stimuli_Surprisal_WordRate.mat', ...
+mkdir('./Example_data/Temp')
+save('./Example_data/Temp/Data_Gain_Stimuli_Surprisal_WordRate.mat', ...
      'dataset', '-v7.3', '-nocompression');
