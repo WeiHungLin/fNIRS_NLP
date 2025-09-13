@@ -28,11 +28,14 @@ Once you have access, follow the setup instructions provided in the LingPred rep
 ## Overview
 This repository is organized into three main parts:
 1. **Sample data**
-   - five de-id data was included
+   - Three de-id data was included in the Example_data/raw_data
+   - The cutted data was stored in the Example_data/cutted_data, the Q&A sections were cutted and only the story listening parts are kept
+   - The surprisals were stored in the Example_data/surprisal_data/HH_DesignMatrix_augmented.csv
+   - The analysis results were stored in the Example_data/Temp
 
 2. **Data preparation**
    - Data preparation mainly based on Henry Huggings story listening data
-   - Data cut (remove the q&a part and reconnect the story listening part)
+   - Data cut (remove the Q&A part and reconnect the story listening part)
 
 3. **Three-Way split analysis**  
    - Suprisal calculation at 3 different levels lexcial/sytactical/phonem (with parallel workers)  
