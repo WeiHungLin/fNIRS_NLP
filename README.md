@@ -40,7 +40,7 @@ This repository is organized into three main parts:
 3. **Three-Way split analysis**  
    - Suprisal calculation at 3 different levels lexcial/sytactical/phonem (with parallel workers)  
    - Data recoding - insert the suprisal data into fNIRS data to become its design matrix
-   - First level, group level analysis and contrast and plotting are covered in https://github.com/xiaosuhu/fNIRS-DataProcessing-Pipelines-w-functions
+   - First level, group level analysis and contrast and plotting are covered in https://github.com/xiaosuhu/fNIRS-DataProcessing-Pipelines-w-functions, in this repo, these are just added for convinience
 
 4. **NLP forecasting with future words**  
    - GPT2 embeeding calculation  
