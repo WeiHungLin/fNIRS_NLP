@@ -81,7 +81,6 @@ source ~/.bashrc
 
 On Windows: just run the `.exe` installer from the same link.
 
----
 
 ### 2. Create and Activate a New Environment
 
@@ -90,7 +89,6 @@ conda create -n myenv python=3.10
 conda activate myenv
 ```
 
----
 
 ### 3. Install Packages from requirements.txt
 
@@ -110,8 +108,9 @@ This will recreate the environment with the same package versions.
   - Please have the following toolbox or pipelines in path:
     - https://github.com/huppertt/nirs-toolbox
     - https://github.com/xiaosuhu/fNIRS-DataProcessing-Pipelines-w-functions
+    - https://github.com/xiaosuhu/fNIRS_NLP
 - Python:
-  - see the requriment.txt
+  - see above **Installing the Python Environment**
 
 ---
 
