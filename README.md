@@ -59,13 +59,49 @@ This repository is organized into three main parts:
 
 ---
 
-## Installation
+## Installing the Python Environment
+
+### 1. Install Miniconda
+
+Miniconda is a minimal installer for conda.  
+Download it from the official page: [https://docs.conda.io/en/latest/miniconda.html](https://docs.conda.io/en/latest/miniconda.html)
+
+Example (Linux / macOS):
+
 ```bash
-git clone https://github.com/xiaosuhu/fNIRS_NLP
-cd yourrepo
-conda env create -f environment.yml
-conda activate yourenv
+# Download installer (example for Linux x86_64)
+wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+
+# Run installer
+bash Miniconda3-latest-Linux-x86_64.sh
+
+# Restart shell so conda is available
+source ~/.bashrc
 ```
+
+On Windows: just run the `.exe` installer from the same link.
+
+---
+
+### 2. Create and Activate a New Environment
+
+```bash
+conda create -n myenv python=3.10
+conda activate myenv
+```
+
+---
+
+### 3. Install Packages from requirements.txt
+
+Since the file was generated with `conda list -e`, you can restore it like this:
+
+```bash
+conda install --yes --file requirements.txt
+```
+
+This will recreate the environment with the same package versions.
+
 
 ---
 
