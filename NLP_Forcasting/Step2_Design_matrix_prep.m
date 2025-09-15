@@ -6,12 +6,12 @@
 load('./Example_data/gpt2_embeddings/gpt2_layer_8_activations_norm.mat')
 
 % load the time for each word
-design = readtable('./csv_xls_files/HH_time_matrix_round-v2.csv'); 
+design = readtable('./Example_Data/timing_matrix/HH_time_matrix_round-shift.csv'); 
 % stim_time = design.Start_time_adjusted_round;
 
 % Find the maximum time (assuming time starts at 0)
 % max_time = max(stim_time);
-max_time = 827;
+max_time = 836;
 % +1 because the time starts on 0
 t = 1:max_time+1;
 
@@ -26,7 +26,7 @@ for i = 1:25
     % Assign the result to a dynamic field in the struct
     activation_set{i} = shifted_matrix;
     
-    % This method is not proper
+    % This method may not be proper, but currently we are doing it this way
     % shifted_stim_time = [stim_time(i:end);zeros(i-1,1)]; 
     % stim_time_set{i} = shifted_stim_time;
     eval(strcat('stim_time_set{i}=design.Time_shift_',num2str(i-1),'(i:end);'));
@@ -114,3 +114,12 @@ design_mat_25 = [design_mat{1+inc} design_mat{2+inc} design_mat{3+inc} design_ma
 for i = 1:25 % Assume you have design_mat_1 to design_mat_10
     eval(strcat('pc_mat_',num2str(i) ,'= pca_20(design_mat_',num2str(i),');'));
 end
+
+% Save the design mat after pca
+output_path = './Example_data/timing_matrix/design_mat_after_pca.mat';
+save(output_path, 'pc_mat_1', 'pc_mat_2', 'pc_mat_3', ...
+     'pc_mat_4', 'pc_mat_5', 'pc_mat_6', 'pc_mat_7', 'pc_mat_8', ...
+     'pc_mat_9', 'pc_mat_10', 'pc_mat_11', 'pc_mat_12', 'pc_mat_13', ...
+     'pc_mat_14', 'pc_mat_15', 'pc_mat_16', 'pc_mat_17', 'pc_mat_18', ...
+     'pc_mat_19', 'pc_mat_20', 'pc_mat_21', 'pc_mat_22', 'pc_mat_23', ...
+     'pc_mat_24', 'pc_mat_25');
