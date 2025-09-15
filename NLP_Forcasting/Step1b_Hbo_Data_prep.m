@@ -48,6 +48,6 @@ for i = 1:length(hb_trim)
     [folder, baseFileName, ~] = fileparts(hb_trim(i).description);
     ext='.mat';
     fileNameWithExt = [baseFileName, ext];
-    save(strcat('./Example_data/hbo_data_forcast',fileNameWithExt), 'hbodata');
+    save(strcat('./Example_data/hbo_data_forcast/',fileNameWithExt), 'hbodata');
     disp(strcat(num2str(i),'...'));
 end

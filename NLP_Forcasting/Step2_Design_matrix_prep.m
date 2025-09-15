@@ -1,8 +1,9 @@
 %% Create the stim base with only the current word
 % This code will be after the code of Step1a to get the activations
+% by Frank Hu 2025-09
 
 % load the gpt2 generated embeddings
-load('./design_matrix/activation_gpt2/norm_activation_baseline_8.mat')
+load('./Example_data/gpt2_embeddings/gpt2_layer_8_activations_norm.mat')
 
 % load the time for each word
 design = readtable('./csv_xls_files/HH_time_matrix_round-v2.csv'); 
