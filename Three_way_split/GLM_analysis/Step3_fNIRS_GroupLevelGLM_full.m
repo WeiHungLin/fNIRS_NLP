@@ -34,5 +34,5 @@ GroupStats= grouplevelpipeline.run(SubjStats);
 % draw the results - simple version
 % GroupStats.draw('tstat',[-4 4]);
 %% Save the results
-save('./Example_data/Temp/GroupStats.mat', ...
+save('./Example_data/example_results_3_way/GroupStats.mat', ...
      'GroupStats', '-v7.3', '-nocompression');

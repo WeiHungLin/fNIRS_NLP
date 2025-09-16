@@ -76,7 +76,7 @@ firstlevelglm.basis('default') = firstlevelbasis;
 SubjStats=firstlevelglm.run(hb_trim);
 disp('Ready to save SubjStats...')
 
-save('./Example_data/Temp/SubjStats.mat','SubjStats','-v7.3','-nocompression')
+save('./Example_data/example_results_3_way/SubjStats.mat','SubjStats','-v7.3','-nocompression')
 disp('Done!')
 
 %% Add Age & Gender for demographic as example

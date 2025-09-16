@@ -83,6 +83,7 @@ for k = 1:length(dataset)
 end
 
 %% Save result
-mkdir('./Example_data/Temp')
-save('./Example_data/Temp/Data_Gain_Stimuli_Surprisal_WordRate.mat', ...
+% mkdir('./Example_data/example_results_3_way') % uncomment if this is the
+% first time
+save('./Example_data/example_results_3_way/Data_Gain_Stimuli_Surprisal_WordRate.mat', ...
      'dataset', '-v7.3', '-nocompression');
