@@ -58,22 +58,32 @@ This repo references the LingPred toolkit (https://github.com/cnllab/lingpred) f
 
 ```matlab
 % example (MATLAB)
-run('Data_Prep/data_cut_two_ver_combined.m')
+Data_Prep/data_cut_two_ver_combined.m
+
+% This code included cutting out the Q&A part (4 and 12 questions version) for the story fNIRS file
 ```
 
-2) GPT-2 embedding extraction (Python)
+2) 3-Way split analysis
 
-- Open `NLP_Forcasting/Step1a_GPU_Embeddings_extract_gpt2.ipynb` and follow the notebook to extract per-token embeddings using Hugging Face Transformers.
+- Open `Three_way_split\story_surprisal_three_way_calc` and follow the notebook `run_on_test_sentence.ipynb` to extract 3-level surprisal using `ling-pred` toolbox.
 
-3) Brain score calculation (example)
+- GLM analysis `Three_way_split\GLM_analysis`
+   1. Use the recoding to add the surprisals into the fNIRS data files
+   2. The first, group level analysis and plot are the same as in the GLM pipeline
 
-- Run the Python example to compute correlations between model features and fNIRS responses:
+3) Forcasting analysis
 
-```powershell
-python NLP_Forcasting/brain_score.py
-```
+- Analyse using the following steps 0 - 6:
+   1. Step 0 time matrix round
+   2. GPT2 embedding calculation
+   3. HbO data prep
+   4. Design matrix prep
+   5. brain score calc
+   6. brain score plot
+   7. ROI plot in Matlab
+   8. Peak map plot in Matlab
 
-Example results are included in `Example_data/example_results_forcast/` and `Example_data/example_results_3_way/`.
+4) Example results are included in `Example_data/`.
 
 ---
 
@@ -81,12 +91,6 @@ Example results are included in `Example_data/example_results_forcast/` and `Exa
 
 - Example de-identified data is included under `Example_data/` for demonstration only. If you use your own data, follow the same file naming and channel conventions present in the examples.
 - Some analysis steps require external access (e.g., LingPred for surprisal). Obtain necessary permissions before running those steps.
-
----
-
-## Tests & validation
-
-There are no automated unit tests currently. I can add a minimal smoke test for the Python parts (for example: import `brain_score.py` and run a tiny example) if you'd like.
 
 ---
 
@@ -102,8 +106,4 @@ For questions or collaborations contact:
 
 - Frank Hu — xiaosuhu@umich.edu
 
----
 
-If you want, next steps I can take:
-- Add a short quick-start Jupyter notebook that runs a minimal end-to-end demo (Python) using the example data
-- Add a small smoke test for `NLP_Forcasting/` scripts
