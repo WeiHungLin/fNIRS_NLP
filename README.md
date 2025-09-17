@@ -19,7 +19,7 @@ Short summary
 ## Quick start
 
 Requirements
-- MATLAB (with the NIRS toolbox available on the MATLAB path — see Requirements)
+- MATLAB (with the **NIRS toolbox** and **GLM pipeline** available on the MATLAB path)
 - Python 3.10+ (recommended) and the Python packages listed in `NLP_Forcasting/requirements.txt`
 
 1) MATLAB: add the required toolboxes and repo paths to MATLAB's path (see Requirements)
