@@ -79,9 +79,25 @@ Data_Prep/data_cut_two_ver_combined.m
    3. HbO data prep
    4. Design matrix prep
    5. brain score calc
+      5. Nested Cross-Validation and Ridge Regression
+         - **Data Preparation**:
+           - The input data (X, y) is scaled using `StandardScaler` to standardize features.
+           - A `TimeSeriesSplit` is used for time-aware cross-validation.
+         - **Nested Cross-Validation**:
+           - For each fold in the outer cross-validation:
+             - The training set is used to find the best ridge regression regularization parameter (`alpha`) via an inner cross-validation (`nested_tscv_ridge_cuda`).
+             - In the inner loop, ridge regression is performed for multiple `alpha` values, and the one minimizing the mean squared error (MSE) across folds is selected.
+         - **Ridge Regression**:
+           - Using the best `alpha`, ridge regression is solved analytically on the GPU for the training data.
+           - Predictions are generated for the test set.
+         - **Correlation and Fisher Z Transformation**:
+           - The Pearson correlation between the true and predicted values for the test set is computed using `compute_correlation`.
+           - The correlation is transformed into a Fisher Z-score using `fisher_z_transform`.
    6. brain score plot
    7. ROI plot in Matlab
    8. Peak map plot in Matlab
+
+   ![Forecasting Pipeline](NLP_Forcasting/Forcasting_pipeline.png)
 
 4) Example results are included in `Example_data/`.
 
