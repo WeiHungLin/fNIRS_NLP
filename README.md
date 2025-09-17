@@ -97,7 +97,7 @@ Data_Prep/data_cut_two_ver_combined.m
    7. ROI plot in Matlab
    8. Peak map plot in Matlab
 
-   ![Forecasting Pipeline](NLP_Forcasting/Forcasting_pipeline.png)
+   ![Forecasting Pipeline](Forcasting_pipeline.png)
 
 4) Example results are included in `Example_data/`.
 
