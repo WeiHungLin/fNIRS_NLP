@@ -34,6 +34,22 @@ Notes
 - On Windows run the Miniconda installer executable from https://docs.conda.io/en/latest/miniconda.html.
 - The `requirements.txt` in `NLP_Forcasting/` was exported from a conda environment — restoring it via `conda install --file` recreates pinned versions.
 
+### Installing Miniconda
+
+To set up the Python environment, you need Miniconda installed. Follow these steps:
+
+1. Download the Miniconda installer for your operating system from the [official Miniconda website](https://docs.conda.io/en/latest/miniconda.html).
+2. Run the installer and follow the on-screen instructions to complete the installation.
+3. After installation, open a terminal (or Anaconda Prompt on Windows) and verify the installation by running:
+
+   ```bash
+   conda --version
+   ```
+
+   This should display the installed version of Conda.
+
+Once Miniconda is installed, proceed with the steps below to create and activate the required environment.
+
 ---
 
 ## What this repository contains
