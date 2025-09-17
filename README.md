@@ -1,21 +1,6 @@
-# fNIRS Data Processing pipelines for natual language processing (NLP)
+# fNIRS_NLP — fNIRS pipelines for natural language processing (NLP)
 
-This repository contains different MATLAB and Python scripts for fNIRS data processing pipelines (NLP tasks). 
-
-**NOTE**:
-#### NIRS toolbox
-You will need to first install **NIRS toolbox** (see [Installation](#installation) for details) in MATLAB in order to run these pipelines.
-
-#### Suprisal Calculation
-
-If you would like to calculate surprisal values yourself, please request access to the following package:
-
-👉 [LingPred](https://github.com/cnllab/lingpred)
-
-Access to LingPred is managed by **Dr. Jonathan Brennan (University of Michigan)**.  
-Please reach out to him directly to obtain the necessary permissions before running the surprisal pipeline.  
-
-Once you have access, follow the setup instructions provided in the LingPred repository to install dependencies and run the surprisal extraction tools.
+A collection of MATLAB and Python scripts to preprocess, analyze, and run NLP-based analyses on fNIRS data. The project includes data-preparation tools, surprisal integration, GPT-2 embedding forecasting, and example results.
 
 <p align="left">
   <img src="https://img.shields.io/badge/version-0.1-blue" alt="Version Badge">
@@ -23,97 +8,102 @@ Once you have access, follow the setup instructions provided in the LingPred rep
   <img src="https://img.shields.io/badge/build-building_inprogress-yellow" alt="Build Badge">
 </p>
 
----
-
-## Overview
-This repository is organized into three main parts:
-1. **Sample data**
-   - Three de-id data was included in the Example_data/raw_data
-   - The cutted data was stored in the Example_data/cutted_data, the Q&A sections were cutted and only the story listening parts are kept
-   - The surprisals were stored in the Example_data/surprisal_data/HH_DesignMatrix_augmented.csv
-   - The analysis results were stored in the Example_data/Temp
-
-2. **Data preparation**
-   - Data preparation mainly based on Henry Huggings story listening data
-   - Data cut (remove the Q&A part and reconnect the story listening part)
-
-3. **Three-Way split analysis**  
-   - Suprisal calculation at 3 different levels lexcial/sytactical/phonem (with parallel workers)  
-   - Data recoding - insert the suprisal data into fNIRS data to become its design matrix
-   - First level, group level analysis and contrast and plotting are covered in https://github.com/xiaosuhu/fNIRS-DataProcessing-Pipelines-w-functions, in this repo, these are just added for convinience
-
-4. **NLP forecasting with future words**  
-   - GPT2 embeeding calculation  
-   - HbO data prep for the analysis
-   - design matrix prep
-   - Calculate brain score (correlation) and brain forcast score (forcasted brain score)
-   - Plotting and stats in Matlab
-   - This method comes from the paper "Evidence of a predictive coding hierarchy in the human brain listening to speech" - https://www.nature.com/articles/s41562-022-01516-2
-
-   Here is an illustration of the workflow:
-
-   ![Workflow Diagram](Forcasting_pipeline.png)
-
-### Results
-![Workflow Diagram](sample-result.png)
+Short summary
+- Example (de-identified) data and processed cutted data used for testing and demos
+- Scripts for data preparation and three-way suprisal calculations
+- NLP forecasting pipeline (GPT-2 embeddings, design matrix prep, brain/forecast scores)
+- Example results and figures (see `Example_data/`)
 
 ---
 
-## Installing the Python Environment
+## Quick start
 
-### 1. Install Miniconda
+Requirements
+- MATLAB (with the NIRS toolbox available on the MATLAB path — see Requirements)
+- Python 3.10+ (recommended) and the Python packages listed in `NLP_Forcasting/requirements.txt`
 
-Miniconda is a minimal installer for conda.  
-Download it from the official page: [https://docs.conda.io/en/latest/miniconda.html](https://docs.conda.io/en/latest/miniconda.html)
+1) MATLAB: add the required toolboxes and repo paths to MATLAB's path (see Requirements)
+2) Python (Windows PowerShell example):
 
-Example (Linux / macOS):
-
-```bash
-# Download installer (example for Linux x86_64)
-wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
-
-# Run installer
-bash Miniconda3-latest-Linux-x86_64.sh
-
-# Restart shell so conda is available
-source ~/.bashrc
+```powershell
+conda create -n fnirs_nlp python=3.10 -y ; conda activate fnirs_nlp
+conda install --yes --file NLP_Forcasting/requirements.txt
 ```
 
-On Windows: just run the `.exe` installer from the same link.
-
-
-### 2. Create and Activate a New Environment
-
-```bash
-conda create -n myenv python=3.10
-conda activate myenv
-```
-
-
-### 3. Install Packages from requirements.txt
-
-Since the file was generated with `conda list -e`, you can restore it like this:
-
-```bash
-conda install --yes --file requirements.txt
-```
-
-This will recreate the environment with the same package versions.
-
+Notes
+- On Windows run the Miniconda installer executable from https://docs.conda.io/en/latest/miniconda.html.
+- The `requirements.txt` in `NLP_Forcasting/` was exported from a conda environment — restoring it via `conda install --file` recreates pinned versions.
 
 ---
 
-## Requirements
-- Matlab:
-  - Please have the following toolbox or pipelines in path:
-    - https://github.com/huppertt/nirs-toolbox
-    - https://github.com/xiaosuhu/fNIRS-DataProcessing-Pipelines-w-functions
-    - https://github.com/xiaosuhu/fNIRS_NLP
-- Python:
-  - see above **Installing the Python Environment**
+## What this repository contains
+
+- `Data_Prep/` — MATLAB scripts for cutting and preparing raw fNIRS files (e.g. `data_cut_two_ver_combined.m`)
+- `Example_data/` — example dataset, processed files, design matrices, and example results for demos
+- `NLP_Forcasting/` — Python notebooks and MATLAB scripts for embeddings extraction, design-matrix prep, brain score calculations, and plotting (see `brain_score.py` and notebooks)
+- `Three_way_split/` — suprisal-based pipelines and GLM analysis scripts
+
+---
+
+## Suprisal / LingPred note
+This repo references the LingPred toolkit (https://github.com/cnllab/lingpred) for surprisal extraction. Access to LingPred is managed by Dr. Jonathan Brennan (University of Michigan); please contact him for access and follow LingPred's setup instructions before running surprisal-related steps.
+
+---
+
+## Usage examples
+
+1) MATLAB data-prep (example)
+
+- Open MATLAB, add this repo and the required toolboxes to the MATLAB path, then run:
+
+```matlab
+% example (MATLAB)
+run('Data_Prep/data_cut_two_ver_combined.m')
+```
+
+2) GPT-2 embedding extraction (Python)
+
+- Open `NLP_Forcasting/Step1a_GPU_Embeddings_extract_gpt2.ipynb` and follow the notebook to extract per-token embeddings using Hugging Face Transformers.
+
+3) Brain score calculation (example)
+
+- Run the Python example to compute correlations between model features and fNIRS responses:
+
+```powershell
+python NLP_Forcasting/brain_score.py
+```
+
+Example results are included in `Example_data/example_results_forcast/` and `Example_data/example_results_3_way/`.
+
+---
+
+## Reproducibility & data
+
+- Example de-identified data is included under `Example_data/` for demonstration only. If you use your own data, follow the same file naming and channel conventions present in the examples.
+- Some analysis steps require external access (e.g., LingPred for surprisal). Obtain necessary permissions before running those steps.
+
+---
+
+## Tests & validation
+
+There are no automated unit tests currently. I can add a minimal smoke test for the Python parts (for example: import `brain_score.py` and run a tiny example) if you'd like.
+
+---
+
+## License
+
+This project is released under the MIT License. See `LICENSE` for details.
 
 ---
 
 ## Contact
-For questions or collaborations:  
-**Frank Hu** – [xiaosuhu@umich.edu]  
+
+For questions or collaborations contact:
+
+- Frank Hu — xiaosuhu@umich.edu
+
+---
+
+If you want, next steps I can take:
+- Add a short quick-start Jupyter notebook that runs a minimal end-to-end demo (Python) using the example data
+- Add a small smoke test for `NLP_Forcasting/` scripts
